@@ -1,0 +1,48 @@
+[tool.black]
+line-length = 120
+target-version = ['py310']
+include = '\.pyi?$'
+exclude-extend = '''
+/venv
+/.venv
+/__pycache__
+/.mypy_cache
+/.pytest_cache
+/db.sqlite3
+/alembic
+'''
+
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "UP", "I"]
+ignore = ["E501"]
+fixable = ["A", "B", "C", "D", "E", "F", "I"]
+exclude = [
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".mypy_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "migrations",
+    "__pypackages__",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "alembic"
+]
+
+[tool.ruff.isort]
+section-order = ["future", "fastapi", "standard-library", "third-party",  "first-party", "local-folder"]
+
+[tool.ruff.isort.sections]
+fastapi = ["fastapi"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
